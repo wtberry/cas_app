@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post # import whatever object / table you want to display
+from .models import Post, Course # import whatever object / table you want to display
 # Create your views here.
 
 ## creating some data to pass to the pages with templates
@@ -31,3 +31,7 @@ def home(request):
 def about(request):
     context = {'stuff':stuff}
     return render(request, 'cas/about.html', context)
+
+def display_data(request):
+    data = {'courses':Course.objects.all()} # this is iterable
+    return render(request, 'cas/data.html', data)

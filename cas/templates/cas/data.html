@@ -1,0 +1,15 @@
+{% extends "cas/base.html" %}
+{% block content %}
+	<h1>CAS Data</h1>
+	<p>Welcome to Tutoring</p>
+		{% for course in courses %} 
+		<article class="media content-section">
+          		<div class="media-body">
+            			<div class="article-metadata"
+						<a class="mr-2" href="#">{{course.name}}</a>
+				</div>
+			</div>
+		</article>
+		{% endfor %}
+{% endblock content %}
+

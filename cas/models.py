@@ -23,7 +23,9 @@ class Course(models.Model):
     ## attr
     #course_ID = models.AutoField() #unique int values
     #professor = ### professor class
-    course_name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    signiture = models.IntegerField(default=0) # the cours number
+    subject = models.CharField(max_length=5) # CSCI .... or JPNS etc
 
     def __str__(self): ## magic / special method
         return self.course_name
@@ -53,7 +55,7 @@ class Position(models.Model):
 
 ### Supervisor ###
 class Supervisor(Employee):
-    post = models.ForeignKey(Position, on_delete=#whatever)
+    post = models.ForeignKey(Position, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.lname + self.fname
@@ -83,21 +85,21 @@ class Student(models.Model):
 
 ##### Students' subclasses #####
 class Tutor(Student):
-    courses = model.ManyToManyField(Course) # a class that this is related, and on_delete option
+    courses = models.ManyToManyField(Course) # a class that this is related, and on_delete option
 
 class Client(Student):
-    course = model.ManyToManyField(Course) # clients and courses
+    course = models.ManyToManyField(Course) # clients and courses
 
 ### Class for Session ###
 class Session(models.Model):
     # attributes in the database
     start_time = models.DateTimeField(default=timezone.now)
     finish_time = models.DateTimeField(default=timezone.now)
-    client = models.ForeignKey(User) # client and tutor's stu_id number from other tables
-    tutor = models.ForeignKey(Tutor)
-    course = models.ForeignKey(Course)## SOMETHING HERE FROM COURSE TABLE)
+    client = models.ForeignKey(User, on_delete=models.PROTECT) # client and tutor's stu_id number from other tables
+    tutor = models.ForeignKey(Tutor, on_delete=models.PROTECT)
+    course = models.ForeignKey(Course, on_delete=models.PROTECT)## SOMETHING HERE FROM COURSE TABLE)
 
-    professor = models.ForeignKey(Professor) # prof's emp_id
+    professor = models.ForeignKey(Professor, on_delete=models.PROTECT) # prof's emp_id
 
 
 

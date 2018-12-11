@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # add new application every time you make one
 INSTALLED_APPS = [
     'cas.apps.CasConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -106,7 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# How to check timezone: https://stackoverflow.com/questions/13866926/is-there-a-list-of-pytz-timezones
+TIME_ZONE = 'US/Hawaii' 
 
 USE_I18N = True
 
