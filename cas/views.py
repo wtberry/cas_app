@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post # import whatever object / table you want to display
 # Create your views here.
 
 ## creating some data to pass to the pages with templates
-posts = [
+stuff = [
         {
             'name': 'Lisa',
             'position': 'Director',
@@ -23,9 +24,10 @@ posts = [
 
 def home(request):
     context = {
-            'posts':posts
+            'posts':Post.objects.all()
             }
     return render(request, 'cas/home.html', context) # returning templates in templates/cas
 
 def about(request):
-    return render(request, 'cas/about.html', {'title': "Abouty-using template for title"})
+    context = {'stuff':stuff}
+    return render(request, 'cas/about.html', context)

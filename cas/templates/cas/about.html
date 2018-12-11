@@ -2,7 +2,18 @@
 {% block content %}
 
 	<h1>Who we are?</h1>
-	<h2>==Our Mission Statements==</h2>
+	<h2>=Our Mission Statements=</h2>
 	<p>Our mission is to help and promote students thrive academically at Hawaii Pacific University.</p>
+		<p>Welcome to Tutoring</p>
+		{% for s in stuff %}
+		<article class="media content-section">
+          		<div class="media-body">
+            			<div class="article-metadata"
+						<a class="mr-2" href="#">{{s.position}}: {{s.name}} from {{s.from}}</a>
+				</div>
+			</div>
+		</article>
+		{% endfor %}
+
 
 {% endblock content %}
