@@ -28,7 +28,7 @@ class Course(models.Model):
     subject = models.CharField(max_length=5) # CSCI .... or JPNS etc
 
     def __str__(self): ## magic / special method
-        return self.course_name
+        return self.name
 
 ### Employee class to be inherited ###
 class Employee(models.Model):
