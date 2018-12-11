@@ -1,0 +1,14 @@
+{% extends "cas/base.html" %}
+{% block content %}
+	<h1>CAS Home</h1>
+	<p>Welcome to Tutoring</p>
+		{% for post in posts %} 
+		<article class="media content-section">
+          		<div class="media-body">
+            			<div class="article-metadata"
+						<a class="mr-2" href="#">{{post.position}}: {{post.name}} from {{post.from}}</a>
+				</div>
+			</div>
+		</article>
+		{% endfor %}
+{% endblock content %}
